@@ -111,11 +111,31 @@ function managerQuestions() {
   inquirer
     .prompt(managerQuestionsArr)
     .then((response) => {
-        new Manager(response.name, response.id, response.email, response.officeNumber)
-        init();
+      new Manager(
+        response.name,
+        response.id,
+        response.email,
+        response.officeNumber
+      );
+      init();
     })
     .catch((err) => console.log(err));
 }
+
+function engineerQuestions() {
+    inquirer
+      .prompt(engineerQuestionsArr)
+      .then((response) => {
+        new Engineer(
+          response.name,
+          response.id,
+          response.email,
+          response.github
+        );
+        init();
+      })
+      .catch((err) => console.log(err));
+  }
 
 init();
 
