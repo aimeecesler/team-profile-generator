@@ -137,6 +137,21 @@ function engineerQuestions() {
       .catch((err) => console.log(err));
   }
 
+  function internQuestions() {
+    inquirer
+      .prompt(internQuestionsArr)
+      .then((response) => {
+        new Intern(
+          response.name,
+          response.id,
+          response.email,
+          response.school
+        );
+        init();
+      })
+      .catch((err) => console.log(err));
+  }
+
 init();
 
 // Write code to use inquirer to gather information about the development team members,
