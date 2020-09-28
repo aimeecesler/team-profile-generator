@@ -12,6 +12,8 @@ const render = require("./lib/htmlRenderer");
 const { prompt } = require("inquirer");
 const Employee = require("./lib/Employee");
 
+const employees = [];
+
 // array of questions for user
 const initialQuestion = [
   {
@@ -102,6 +104,7 @@ function init() {
       } else if (answer.employeeType === "Intern") {
         internQuestions();
       } else {
+        console.log(employees);
       }
     })
     .catch((err) => console.log(err));
@@ -111,12 +114,12 @@ function managerQuestions() {
   inquirer
     .prompt(managerQuestionsArr)
     .then((response) => {
-      new Manager(
+      employees.push(new Manager(
         response.name,
         response.id,
         response.email,
         response.officeNumber
-      );
+      ));
       init();
     })
     .catch((err) => console.log(err));
@@ -126,12 +129,12 @@ function engineerQuestions() {
     inquirer
       .prompt(engineerQuestionsArr)
       .then((response) => {
-        new Engineer(
+        employees.push(new Engineer(
           response.name,
           response.id,
           response.email,
           response.github
-        );
+        ));
         init();
       })
       .catch((err) => console.log(err));
@@ -141,12 +144,12 @@ function engineerQuestions() {
     inquirer
       .prompt(internQuestionsArr)
       .then((response) => {
-        new Intern(
+        employees.push(new Intern(
           response.name,
           response.id,
           response.email,
           response.school
-        );
+        ));
         init();
       })
       .catch((err) => console.log(err));
