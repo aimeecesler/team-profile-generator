@@ -9,6 +9,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { prompt } = require("inquirer");
+const Employee = require("./lib/Employee");
 
 // array of questions for user
 const initialQuestion = [
@@ -101,6 +103,16 @@ function init() {
         internQuestions();
       } else {
       }
+    })
+    .catch((err) => console.log(err));
+}
+
+function managerQuestions() {
+  inquirer
+    .prompt(managerQuestionsArr)
+    .then((response) => {
+        new Manager(response.name, response.id, response.email, response.officeNumber)
+        init();
     })
     .catch((err) => console.log(err));
 }
