@@ -11,45 +11,101 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 // array of questions for user
-const managerQuestions = [
-    {
-      type: "input",
-      message: "What is your manager's name?",
-      name: "name",
-    },
-    {
-        type: "input",
-        message: "What is your manager's id?",
-        name: "id",
-      },
-      {
-        type: "input",
-        message: "What is your manager's email?",
-        name: "email",
-      },
-      {
-        type: "input",
-        message: "What is your manager's office number?",
-        name: "officeNumber",
-      },
-    {
-      type: "list",
-      message:
-        "Which type of team member would you like to add?",
-      name: "employeeType",
-      choices: ["Manager", "Engineer", "Intern"],
-    },
-  ];
+const initialQuestion = [
+  {
+    type: "list",
+    message: "Which type of team member would you like to add?",
+    name: "employeeType",
+    choices: ["Manager", "Engineer", "Intern", "I have no more team members"],
+  },
+];
 
-  function init(){
-      inquirer
-      .prompt()
-      .then()
-      .catch((err) => console.log(err));
-  }
+const managerQuestionsArr = [
+  {
+    type: "input",
+    message: "What is your manager's name?",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "What is your manager's id?",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "What is your manager's email?",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "What is your manager's office number?",
+    name: "officeNumber",
+  },
+];
 
-  init();
+const engineerQuestionsArr = [
+  {
+    type: "input",
+    message: "What is your engineer's name?",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "What is your engineer's id?",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "What is your engineer's email?",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "What is your engineer's github username?",
+    name: "github",
+  },
+];
 
+const internQuestionsArr = [
+  {
+    type: "input",
+    message: "What is your intern's name?",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "What is your intern's id?",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "What is your intern's email?",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "What school does your intern go to?",
+    name: "school",
+  },
+];
+
+function init() {
+  inquirer
+    .prompt(initialQuestion)
+    .then((answer) => {
+      if (answer.employeeType === "Manager") {
+        managerQuestions();
+      } else if (answer.employeeType === "Engineer") {
+        engineerQuestions();
+      } else if (answer.employeeType === "Intern") {
+        internQuestions();
+      } else {
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+init();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
