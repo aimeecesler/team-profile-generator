@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -104,7 +105,8 @@ function init() {
       } else if (answer.employeeType === "Intern") {
         internQuestions();
       } else {
-        console.log(employees);
+        // console.log(employees);
+        render(employees);
       }
     })
     .catch((err) => console.log(err));
