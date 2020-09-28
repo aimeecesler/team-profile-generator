@@ -41,6 +41,15 @@ const managerQuestions = [
     },
   ];
 
+  function init(){
+      inquirer
+      .prompt()
+      .then()
+      .catch((err) => console.log(err));
+  }
+
+  init();
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
