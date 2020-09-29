@@ -1,7 +1,6 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -106,7 +105,10 @@ function init() {
         internQuestions();
       } else {
         // console.log(employees);
-        render(employees);
+        fs.writeFile(outputPath, render(employees), (err) => {
+          if (err) throw err;
+          console.log("Successfully wrote file.");
+        });
       }
     })
     .catch((err) => console.log(err));
@@ -116,46 +118,47 @@ function managerQuestions() {
   inquirer
     .prompt(managerQuestionsArr)
     .then((response) => {
-      employees.push(new Manager(
-        response.name,
-        response.id,
-        response.email,
-        response.officeNumber
-      ));
+      employees.push(
+        new Manager(
+          response.name,
+          response.id,
+          response.email,
+          response.officeNumber
+        )
+      );
       init();
     })
     .catch((err) => console.log(err));
 }
 
 function engineerQuestions() {
-    inquirer
-      .prompt(engineerQuestionsArr)
-      .then((response) => {
-        employees.push(new Engineer(
+  inquirer
+    .prompt(engineerQuestionsArr)
+    .then((response) => {
+      employees.push(
+        new Engineer(
           response.name,
           response.id,
           response.email,
           response.github
-        ));
-        init();
-      })
-      .catch((err) => console.log(err));
-  }
+        )
+      );
+      init();
+    })
+    .catch((err) => console.log(err));
+}
 
-  function internQuestions() {
-    inquirer
-      .prompt(internQuestionsArr)
-      .then((response) => {
-        employees.push(new Intern(
-          response.name,
-          response.id,
-          response.email,
-          response.school
-        ));
-        init();
-      })
-      .catch((err) => console.log(err));
-  }
+function internQuestions() {
+  inquirer
+    .prompt(internQuestionsArr)
+    .then((response) => {
+      employees.push(
+        new Intern(response.name, response.id, response.email, response.school)
+      );
+      init();
+    })
+    .catch((err) => console.log(err));
+}
 
 init();
 
