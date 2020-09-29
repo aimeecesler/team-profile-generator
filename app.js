@@ -24,6 +24,24 @@ const initialQuestion = [
   },
 ];
 
+const basicQuestions = [
+    {
+        type: "input",
+        message: `What is the ${answer.employeeType}'s name?`,
+        name: "name",
+      },
+      {
+        type: "input",
+        message: `What is the ${answer.employeeType}'s ID?`,
+        name: "id",
+      },
+      {
+        type: "input",
+        message: `What is the ${answer.employeeType}'s email?`,
+        name: "email",
+      },
+]
+
 const managerQuestionsArr = [
   {
     type: "input",
