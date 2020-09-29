@@ -23,21 +23,21 @@
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
   </head>
 
-  <body>
-    <div class="container-fluid">
+  <body class="d-flex flex-column min-vh-100">
+    <header class="container-fluid">
       <div class="row">
         <div class="col-12 jumbotron bg-info mb-3 team-heading">
           <h1 class="display-4 text-center text-white">Team Directory</h1>
         </div>
       </div>
-    </div>
-    <div class="container-md flex-fill">
+    </header>
+    <main class="container-md flex-fill">
       <div class="row">
         <div class="team-area col-12 d-flex justify-content-center card-deck">
           {{ team }}
         </div>
       </div>
-    </div>
+    </main>
     <footer class="footer mt-auto py-3 bg-white">
         <div class="container">
           <span class="text-muted"
