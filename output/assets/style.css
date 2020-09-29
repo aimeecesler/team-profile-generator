@@ -10,5 +10,6 @@ body {
     background-repeat: repeat;
 }
 footer {
+    opacity: .9;
     text-align: center;
   }
