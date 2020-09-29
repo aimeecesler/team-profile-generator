@@ -159,7 +159,7 @@ function internQuestions() {
     })
     .catch((err) => console.log(err));
 }
-
+console.log("Please enter your team information.")
 init();
 
 // Write code to use inquirer to gather information about the development team members,
