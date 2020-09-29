@@ -39,7 +39,7 @@ Edit using VSCode after [installation](#installation). JavaScript and package.js
 -----
 
 ## Building the Team Profile Generator
-ADD DESCRIPTION
+Upon opening the terminal for this application, the user must first run 'npm install' to download the required packages. After this, when the user runs the app.js file, they will be presented with a series of questions. The user can add as many employees as they wish, when they are done, they simply select the "None" option when prompted and their team.html file will be written. This file will contain the information provided by the user for each employee and will be sorted based on the employee type.
 
 ![User Questions]()
 
@@ -60,6 +60,11 @@ ADD DESCRIPTION
 * The project must prompt the user to build an engineering team. :heavy_check_mark:
 
 * The project must generate a `team.html` page in the `output` directory, that displays a nicely formatted team roster. :heavy_check_mark:
+
+-----
+
+## HTML Validation
+The output from this application was run through the [W3C Markup Validation Service](https://validator.w3.org/) to ensure valid and correct HTML. There were no errors or issues found.
 
 -----
 

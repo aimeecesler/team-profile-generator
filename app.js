@@ -19,12 +19,12 @@ const employees = [];
 
 // QUESTION ARRAYS FOR USER
 // INIT QUESTION
-const initialQuestion = [
+const initialQuestionArr = [
   {
     type: "list",
     message: "Which type of team member would you like to add?",
     name: "employeeType",
-    choices: ["Manager", "Engineer", "Intern", "None"],
+    choices: ["Engineer", "Intern", "None"],
   },
 ];
 // MANAGER QUESTIONS
@@ -98,28 +98,7 @@ const internQuestionsArr = [
 ];
 // INIT FUNCTION TO ASK FIRST QUESTION
 function init() {
-  inquirer
-    .prompt(initialQuestion)
-    .then((answer) => {
-      if (answer.employeeType === "Manager") {
-        managerQuestions();
-      } else if (answer.employeeType === "Engineer") {
-        engineerQuestions();
-      } else if (answer.employeeType === "Intern") {
-        internQuestions();
-      } else {
-        // console.log(employees);
-        fs.writeFile(outputPath, render(employees), (err) => {
-          if (err) throw err;
-          console.log("Successfully wrote file.");
-        });
-      }
-    })
-    .catch((err) => console.log(err));
-}
-// FUNCTION TO ASK QUESTIONS IF MANAGER IS SELECTED
-function managerQuestions() {
-  inquirer
+    inquirer
     .prompt(managerQuestionsArr)
     .then((response) => {
       employees.push(
@@ -130,7 +109,26 @@ function managerQuestions() {
           response.officeNumber
         )
       );
-      init();
+      initialQuestion();
+    })
+    .catch((err) => console.log(err));
+}
+// FUNCTION TO ASK WHAT TYPE OF EMPLOYEE THE USER WANTS TO ADD
+function initialQuestion(){
+    inquirer
+    .prompt(initialQuestionArr)
+    .then((answer) => {
+      if (answer.employeeType === "Engineer") {
+        engineerQuestions();
+      } else if (answer.employeeType === "Intern") {
+        internQuestions();
+      } else {
+        // console.log(employees);
+        fs.writeFile(outputPath, render(employees), (err) => {
+          if (err) throw err;
+          console.log("Successfully wrote file.");
+        });
+      }
     })
     .catch((err) => console.log(err));
 }
@@ -147,7 +145,7 @@ function engineerQuestions() {
           response.github
         )
       );
-      init();
+      initialQuestion();
     })
     .catch((err) => console.log(err));
 }
@@ -159,7 +157,7 @@ function internQuestions() {
       employees.push(
         new Intern(response.name, response.id, response.email, response.school)
       );
-      init();
+      initialQuestion();
     })
     .catch((err) => console.log(err));
 }
