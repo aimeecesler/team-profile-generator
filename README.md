@@ -85,7 +85,7 @@ As always, a huge thanks to our instructional staff for all their hard work!
 
 ## Links
 
-[Repository Link]()
+[Repository Link](https://github.com/aimeecesler/team-profile-generator)
 
 [Demonstration Video]()
 
