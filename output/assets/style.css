@@ -1,0 +1,15 @@
+.card {
+    min-width: 18rem;
+    max-width: 22rem;
+}
+h1 {
+    font-family: 'Bungee Shade', cursive;
+}
+body {
+    background-image: url("./background.png");
+    background-repeat: repeat;
+}
+footer {
+    opacity: 0.5;
+    text-align: center;
+  }

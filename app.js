@@ -24,7 +24,7 @@ const initialQuestion = [
     type: "list",
     message: "Which type of team member would you like to add?",
     name: "employeeType",
-    choices: ["Manager", "Engineer", "Intern", "I have no more team members"],
+    choices: ["Manager", "Engineer", "Intern", "None"],
   },
 ];
 // MANAGER QUESTIONS
