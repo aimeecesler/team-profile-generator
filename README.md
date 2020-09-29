@@ -4,7 +4,7 @@
 
 This repository consists of a command line application that creates a Team webpage with a profile for each employee based on the user's input.
 
-![Sample]()
+![Sample](./assets/readme-images/sample.PNG)
 
 ---
 
