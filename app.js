@@ -20,27 +20,9 @@ const initialQuestion = [
     type: "list",
     message: "Which type of team member would you like to add?",
     name: "employeeType",
-    choices: ["Manager", "Engineer", "Intern", "None"],
+    choices: ["Manager", "Engineer", "Intern", "I have no more team members"],
   },
 ];
-
-const basicQuestions = [
-    {
-        type: "input",
-        message: `What is the ${response.employeeType}'s name?`,
-        name: "name",
-      },
-      {
-        type: "input",
-        message: `What is the ${response.employeeType}'s ID?`,
-        name: "id",
-      },
-      {
-        type: "input",
-        message: `What is the ${response.employeeType}'s email?`,
-        name: "email",
-      },
-]
 
 const managerQuestionsArr = [
   {
@@ -114,30 +96,22 @@ const internQuestionsArr = [
 function init() {
   inquirer
     .prompt(initialQuestion)
-    .then((response) => {
-      if (response.employeeType === "None") {
-        fs.writeFile(outputPath, render(employees), (err) => {
-            if (err) throw err;
-            console.log("Successfully wrote file.");
-          });
+    .then((answer) => {
+      if (answer.employeeType === "Manager") {
+        managerQuestions();
+      } else if (answer.employeeType === "Engineer") {
+        engineerQuestions();
+      } else if (answer.employeeType === "Intern") {
+        internQuestions();
       } else {
-        basicQuestions();
+        // console.log(employees);
+        fs.writeFile(outputPath, render(employees), (err) => {
+          if (err) throw err;
+          console.log("Successfully wrote file.");
+        });
       }
     })
     .catch((err) => console.log(err));
-}
-
-function basicQuestions(){
-    inquirer
-    .prompt(basicQuestions).then((response) => {
-        if (response.employeeType === "Manager"){
-            managerQuestions();
-        } else if (response.employeeType === "Engineer"){
-            engineerQuestions();
-        } else if (response.employeeType === "Intern"){
-            internQuestions();
-        }
-    })
 }
 
 function managerQuestions() {
