@@ -34,7 +34,7 @@ This repository consists of a command line application that creates a Team webpa
 
 Edit using VSCode after [installation](#installation). JavaScript and package.json files are included.
 
-![JS]()
+![JS](./assets/readme-images/JS.PNG)
 
 -----
 
