@@ -42,7 +42,7 @@ Edit using VSCode after [installation](#installation). JavaScript and package.js
 
 Upon opening the terminal for this application, the user must first run 'npm install' to download the required packages. After this, when the user runs the app.js file, they will be presented with a series of questions. The user can add as many employees as they wish, when they are done, they simply select the "None" option when prompted and their team.html file will be written. This file will contain the information provided by the user for each employee and will be sorted based on the employee type.
 
-![User Questions]()
+![User Questions](./assets/readme-images/user.PNG)
 
 ---
 
